@@ -8,8 +8,15 @@
             const children = "Hello Worldsss"
             const className = "container"
             const props = {children,className}
+            // const element = 
+            // <div {...props}/>
+            const element = 
             // aqui a ultima prop sempre sobreescreve
-            const element = <div id="app-root" {...props} className="not-container"/>
+            <div id="app-root" {...props} className="not-container"/>
+            // <div className={className} children={myChildren} />
+            // <div className={className}>
+            //     {myChildren}
+            // </div>
             ReactDOM.render(element, rootElement)
         </script>
     </div>

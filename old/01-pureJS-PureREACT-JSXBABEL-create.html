@@ -1,0 +1,26 @@
+<body>
+    <div id="root">
+        <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+        <script type="text/babel">
+            const rootElement = document.getElementById('root')
+            // ------- JSX -----------
+            // Aí aqui tem que entrar o BABEL
+            const element = <div className="container">Hello World</div>
+            // ------- REACT PURO -----------------
+            // const element = React.createElement('div', {
+            //     // children: ['Hellooo World',', Helllooo World', ', Estamos Aqui'],
+            //     children: React.createElement('span', null, "hallla", ", worlddd"),
+            //     className: 'container'
+            // } )
+            console.log(element);
+            ReactDOM.render(element, rootElement)
+            // ------  JAVASCRIPT PURO -----
+            // const element = document.createElement('div')
+            // element.textContent='Hello World'
+            // element.className = 'container'
+            // rootElement.appendChild(element)
+        </script>
+    </div>
+</body>
