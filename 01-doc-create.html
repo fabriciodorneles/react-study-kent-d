@@ -6,52 +6,47 @@
     <script src="https://unpkg.com/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
     <script src="https://unpkg.com/react-error-boundary@1.2.5/dist/umd/react-error-boundary.js"></script>
     <script type="text/babel">
-      const ErrorBoundary = ReactErrorBoundary.ErrorBoundary
-      // class ErrorBoundary extends React.Component {
-      //   state = {error: null}
-      //   static getDerivedStateFromError(error) {
-      //     return {error}
-      //   }
-      //   render() {
-      //     const {error} = this.state
-      //     if (error) {
-      //       return <this.props.FallbackComponent error={error} />
-      //     }
-      //     return this.props.children
-      //   }
-      // }
+    function Name({name, onNameChange}) {
+      return (
+        <div>
+          <label>Name: </label>
+          <input value={name} onChange={onNameChange} />
+        </div>
+      )
+    }
 
-      function ErrorFallback({error}) {
-        return (
-          <div>
-            <p>Something went wrong:</p>
-            <pre>{error.message}</pre>
-          </div>
-        )
-      }
-      function Bomb() {
-        throw new Error('💥 KABUUUUUM 💥')
-      }
+    function FavoriteAnimal() {
+      const [animal, setAnimal] = React.useState('')
+      return (
+        <div>
+          <label>Favorite Animal: </label>
+          <input
+            value={animal}
+            onChange={event => setAnimal(event.target.value)}
+          />
+        </div>
+      )
+    }
 
-      function App() {
-        const [explode, setExplode] = React.useState(false);
-        return (
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
-            <div>
-              <div>
-                <button onClick={() => setExplode(true)}>💣</button>
-              </div>
-              <div>
-                <ErrorBoundary FallbackComponent={ErrorFallback}>
-                  {explode ? <Bomb /> : 'Push the button Max!'}
-                </ErrorBoundary>       
-              </div>
-            </div>
-          </ErrorBoundary>
-        );
-      }
+    function Display({name}) {
+      return <div>{`Hey ${name}, you are great!`}</div>
+    }
 
-      ReactDOM.render(<App  />, document.getElementById('root'))
-    </script>
+    function App() {
+      const [name, setName] = React.useState('')
+      return (
+        <form>
+          <Name
+            name={name}
+            onNameChange={event => setName(event.target.value)}
+          />
+          <FavoriteAnimal />
+          <Display name={name} />
+        </form>
+      )
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'))
+</script>
   </body>
   
